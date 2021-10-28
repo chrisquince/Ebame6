@@ -94,10 +94,12 @@ Other useful things to look at include the simplified graph that will be used fo
 ls -l -h assembly/high_res/simplified.gfa
 ```
 
+![Simplified](./Figures/Simplified.png) 
+
 And the unitig per sample profiles:
 
 ```
 tail assembly/high_res/simplified.mult_prof
 ```
 
-
+![Select](./Figures/Select.png) 
