@@ -60,7 +60,7 @@ Now copy in the STRONG config file:
 cp ~/repos/Ebame21-Quince/configs/config.yaml .
 ```
 
-We will begin by performing the SPADEs coassembly. First good practice it to check what would be run if command issued:
+We will begin by performing the SPADEs coassembly. First good practice is to check what would be run if command issued:
 
 ```
 STRONG --config config.yaml Results assembly --threads 8 --dryrun --verbose
@@ -69,9 +69,35 @@ STRONG --config config.yaml Results assembly --threads 8 --dryrun --verbose
 Then run coassembly for real:
 
 ```
-STRONG --config config.yaml Results assembly --threads 8 --dryrun --verbose
+STRONG --config config.yaml Results assembly --threads 8 --verbose
 ```
 
+This should take about twenty minutes. When it does done we can have a look at the coassembly outputs. The actual contigs are here:
 
+```
+./Results/assembly/spades/contigs.fasta
+```
+
+How good was the coassembly, what was the N50?
+
+
+```
+~/repos/Ebame21-Quince/scripts/contig-stats.pl < ./Results/assembly/spades/contigs.fasta
+```
+
+sequence #: 1966	total length: 6377796	max length: 174676	N50: 28942	N90: 3000
+
+Other useful things to look at include the simplified graph that will be used for strain resolution.
+
+
+```
+ls -l -h assembly/high_res/simplified.gfa
+```
+
+And the unitig per sample profiles:
+
+```
+tail assembly/high_res/simplified.mult_prof
+```
 
 
