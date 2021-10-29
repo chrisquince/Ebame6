@@ -60,7 +60,7 @@ ls data
 <p>
 
 ```
-echo $(cat data/sample1sample1_R1.fastq |wc -l)/4|bc
+echo $(cat data/sample1sample1/sample1_R1.fastq |wc -l)/4|bc
 ```
 
 </p>
@@ -73,11 +73,26 @@ Now copy in the STRONG config file:
 cp ~/repos/Ebame21-Quince/configs/config.yaml .
 ```
 
+Add this command to the `bayespaths` subsection if not present using your favourite 
+command line text editor:
+
+```
+optional_args: '--nofilter'
+```
+
+Minimise that pesky prompt!
+```
+PS1='\u:\W\$ ' 
+```
+
 We will begin by performing the SPADEs coassembly. First good practice is to check what would be run if command issued:
 
 ```
 STRONG --config config.yaml Results assembly --threads 8 --dryrun --verbose
 ```
+
+Will run over 150 processes! STRONG is a complex pipeline.
+
 
 Then run coassembly for real:
 
