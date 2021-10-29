@@ -16,7 +16,7 @@ Create a VM - EBAME-Quince preferably 8 cores xlarge and login with ssh using X-
 Then we activate the STRONG conda
 
 ```
-conda activate STRONG_db1
+conda activate STRONG
 ```
 
 ## Coassembly
@@ -89,6 +89,8 @@ STRONG --config config.yaml Results assembly --threads 8 --dryrun --verbose
 ```
 
 Will run over 150 processes! STRONG is a complex pipeline.
+
+![Assembly step](Figures/Dag_rules1.png) 
 
 
 Then run coassembly for real:
@@ -176,8 +178,7 @@ COG0060 for this MAG looks like:
 
 ![Bin_2 COG0060](Figures/Bin_2_COG0060.png) 
 
-We might estimate this contains three strains, can we confirm that. We will only run 
-three of the larger COGs. We will do this in a new directory:
+We might estimate this contains three strains, can we confirm that. We will do a trial run of BayesPaths to test this, in a new directory:
 
 ```
 cd ~/data/mydatalocal/Projects/STRONG_AD/Results
@@ -224,7 +225,7 @@ This will take a little time. It should select three strains. We can have a look
 output:
 
 ```
-cd 
+cd Bin_2_small
 ```
 
 Generate a simple plot of fit:
@@ -233,7 +234,7 @@ Generate a simple plot of fit:
 R
 >Pred <- read.csv('Bin_2_smallF_Pred.csv',header=T)
 >library(ggplot2)
->pdf('X.pdf')
+>png('X.png')
 >qplot(data=Pred,x=X_est,y=X) + geom_smooth() + theme_bw()
 >dev.off()
 >q()
@@ -241,34 +242,13 @@ R
 
 Then visualise plot:
 ```
-evince X.pdf
+evince X.png
 ```
 
+![X](Figures/X.png) 
 
-![Bin_2 Fit](Figures/X.pdf) 
 
 
-Error in concoct_refine
-
-original_data_matrix = original_data.values() -> tonumpy()
-    
-    
-    
-#LEGACY 
-
-Create a file ***sel3.txt*** in your editor that looks like this:
-
-```
-COG0060
-COG0072
-COG0532
-```
-
-***Or***:
-
-```
-printf 'COG0060\nCOG0090\nCOG0532' > sel3.txt
-```
     
 
 
