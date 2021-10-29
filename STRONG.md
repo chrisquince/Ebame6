@@ -224,10 +224,6 @@ bayespaths Bin_2/simplif 77 Bin_2_small -r 150 -l Bin_2/selected_cogs.tsv -t cor
 This will take a little time. It should select three strains. We can have a look at the 
 output:
 
-```
-cd Bin_2_small
-```
-
 Generate a simple plot of fit:
 
 ```
@@ -247,6 +243,12 @@ evince X.png
 
 ![X](Figures/X.png) 
 
+```
+grep "COG0060" Bin_2_smallF_maxPath.tsv | sed 's/COG0060_//g' > Bin_2_smallF_maxPath_COG0060.tsv
+python ~/repos/STRONG/BayesPaths/scripts/Add_color.py Bin_2/simplif/COG0060.gfa Bin_2_smallF_maxPath_COG0060.tsv > COG0060_color.gfa
+```
+
+![X](Figures/COG0060_color.png) 
 
 
     
