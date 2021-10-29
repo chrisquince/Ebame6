@@ -40,11 +40,8 @@ Then copy in the short reads:
 
 ```
 
-wget https://ebame6.s3.climb.ac.uk/data_small.tar.gz
 
-cp /some/path/Tutorial/data_small.tar.gz .
-
-tar -xvzf data_small.tar.gz
+cp -r /home/ubuntu/data/public/teachdata/ebame/Quince-data-2021/Quince_datasets/AD_small data
 
 
 ```
