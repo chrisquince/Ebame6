@@ -11,12 +11,12 @@ begin we need to set-up our config file. This has been **mostly** prepared for y
 
 ## Getting started
 
-Create a VM - EBAME-Quince preferably 8 cores xlarge
+Create a VM - EBAME-Quince preferably 8 cores xlarge and login with ssh using X-windows forwarding.
 
 Then we activate the STRONG conda
 
 ```
-conda activate STRONG
+conda activate STRONG_db1
 ```
 
 ## Coassembly
@@ -24,7 +24,7 @@ conda activate STRONG
 Start off by moving into the /mnt directory create new directory Projects (if not already there) and subdirectory STRONG_AD:
 
 ```
-cd ~/mydatalocal
+cd ~/data/mydatalocal
 
 mkdir Projects
 
@@ -53,6 +53,19 @@ Have a look at the data folder structure:
 ```
 ls data
 ```
+
+<details><summary>Can you count the number of reads in sample1?</summary>
+
+
+<p>
+
+```
+echo $(cat data/sample1sample1_R1.fastq |wc -l)/4|bc
+```
+
+</p>
+</details>
+
 
 Now copy in the STRONG config file:
 
