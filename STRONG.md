@@ -248,7 +248,7 @@ grep "COG0060" Bin_2_smallF_maxPath.tsv | sed 's/COG0060_//g' > Bin_2_smallF_max
 python ~/repos/STRONG/BayesPaths/scripts/Add_color.py Bin_2/simplif/COG0060.gfa Bin_2_smallF_maxPath_COG0060.tsv > COG0060_color.gfa
 ```
 
-![X](Figures/COG0060_color.png) 
+![X](Figures/COG0060_colour.png) 
 
 
     
