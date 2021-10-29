@@ -145,6 +145,8 @@ more binning/concoct/list_mags.tsv
 
 There should be three MAGs generated for the next steps in the analysis.
 
+## Subgraph Extraction
+
 The next step is to extract out and simplify the SCG subgraphs for the actual bayespaths strain finding. We run this as above just change assembly to graphextraction:
 
 ```
@@ -164,12 +166,112 @@ Which are again in gfa format with coverages, the raw subgraph unitigs match to 
 
 ![Select](./Figures/Select.png) 
 
+## BayesPaths
+
+These steps generate all the input required for the strain resolving algorithm BayesPaths. This can be run automatically within STRONG but we do a few trial runs to better 
+understand the inputs first. Let's test out the most complex bin Bin_2 in my run:
+
+```
+wc Bin_*/simplif/*0060*tsv
+```
+
+COG0060 for this MAG looks like:
+
+![Bin_2 COG0060](Figures/Bin_2_COG0060.png) 
+
+We might estimate this contains three strains, can we confirm that. We will only run 
+three of the larger COGs. We will do this in a new directory:
+
+```
+cd ~/data/mydatalocal/Projects/STRONG_AD/Results
+mkdir BPTest
+cd BPTest
+```
+
+
+
+Then we will run BayesPaths with a minimum number of NMF iterations and the gene filtering disabled. Type ***bayespaths*** for usage. 
+
+```
+usage: bayespaths [-h] [-l [COG_LIST]] [-t [LENGTH_LIST]] [-f [FRAC_COV]]
+                  [-m [MIN_COV]] [-mf [MIN_FRAC_COV]] [-g [STRAIN_NUMBER]]
+                  [--loess] [--no_gam] [--no_ard] [--no_noise] [-i ITERS]
+                  [-nfo NOFOLDS] [-r [READLENGTH]] [-s RANDOM_SEED]
+                  [-e [EXECUTABLE_PATH]] [-u [UNCERTAIN_FACTOR]]
+                  [-nr NMF_ITERS] [-ngf MAX_GITER] [--noscale_nmf]
+                  [--nofilter] [--norun_elbow] [--norelax] [--nobias]
+                  [--bias_type {unitig,gene,bubble}]
+                  [--tau_type {fixed,log,empirical,auto,poisson}]
+                  [--nogenedev]
+                  Gene_dir kmer_length outFileStub
+bayespaths: error: the following arguments are required: Gene_dir, kmer_length, outFileStub
+```
+
+Then run:
+```
+ln -s ../subgraphs/bin_merged/Bin_2/simplif Bin_2
+
+cp ~/repos/STRONG/BayesPaths/Data/coreCogs.tsv .
+
+```
+
+and finally bayespaths itself:
+
+```
+
+bayespaths Bin_2/simplif 77 Bin_2_small -r 150 -l Bin_2/selected_cogs.tsv -t coreCogs.tsv -g 8 --nofilter -nr 1 -e ~/repos/STRONG/BayesPaths/runfg_source/```
+
+```
+
+This will take a little time. It should select three strains. We can have a look at the 
+output:
+
+```
+cd 
+```
+
+Generate a simple plot of fit:
+
+```
+R
+>Pred <- read.csv('Bin_2_smallF_Pred.csv',header=T)
+>library(ggplot2)
+>pdf('X.pdf')
+>qplot(data=Pred,x=X_est,y=X) + geom_smooth() + theme_bw()
+>dev.off()
+>q()
+```
+
+Then visualise plot:
+```
+evince X.pdf
+```
+
+
+![Bin_2 Fit](Figures/X.pdf) 
 
 
 Error in concoct_refine
 
 original_data_matrix = original_data.values() -> tonumpy()
     
+    
+    
+#LEGACY 
+
+Create a file ***sel3.txt*** in your editor that looks like this:
+
+```
+COG0060
+COG0072
+COG0532
+```
+
+***Or***:
+
+```
+printf 'COG0060\nCOG0090\nCOG0532' > sel3.txt
+```
     
 
 
