@@ -251,7 +251,15 @@ python ~/repos/STRONG/BayesPaths/scripts/Add_color.py Bin_2/simplif/COG0060.gfa 
 ![X](Figures/COG0060_colour.png) 
 
 
-    
+Now run BayesPaths on all three bins will take 20-30mins
+```
+cd /home/ubuntu/data/mydatalocal/Projects/STRONG_AD
+STRONG --config config.yaml Results bayespaths --threads 8 --verbose
+```
+
+```
+STRONG --config config.yaml Results results --threads 8 --verbose
+```    
 
 
 
