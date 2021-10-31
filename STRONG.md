@@ -142,7 +142,22 @@ It also does the actual binning using as default a two step version of CONCOCT a
 more binning/concoct/list_mags.tsv
 ```
 
-There should be three MAGs generated for the next steps in the analysis.
+There should be three MAGs generated for the next steps in the analysis. Can look at 
+SCG frequencies in MAGs:
+
+```
+cd binning/concoct/
+
+tr "," "\t" < SCG_table_concoct.csv > SCG_table_concoct.tsv
+
+cp ~/repos/Ebame21-Quince/scripts/COGPlot.R .
+
+./COGPlot.R -s SCG_table_concoct.tsv -o SCG_table_concoct.pdf
+
+```
+
+![SCG_table](Figures/SCG_table_concoct.pdf) 
+
 
 ## Subgraph Extraction
 
