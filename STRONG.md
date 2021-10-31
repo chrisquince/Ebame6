@@ -291,5 +291,20 @@ We can generate results dir now:
 STRONG --config config.yaml Results results --threads 8 --verbose
 ```    
 
+```
+cd Results/results/Bin_2
+```
+
+Joined graph is useful indicates that we have probably missed a strain on this example, this might be down to not running gene filtering or multiple NMF iterations.
+
+![X](Figures/Bin_2_joined_graph.png)
+
+
+
+and even run DESMAN
+
+```
+STRONG --config config.yaml Results desman --threads 8 --verbose
+```    
 
 
