@@ -248,7 +248,20 @@ grep "COG0060" Bin_2_smallF_maxPath.tsv | sed 's/COG0060_//g' > Bin_2_smallF_max
 python ~/repos/STRONG/BayesPaths/scripts/Add_color.py Bin_2/simplif/COG0060.gfa Bin_2_smallF_maxPath_COG0060.tsv > COG0060_color.gfa
 ```
 
-![X](Figures/COG0060_colour.png) 
+This can be visualised in Bandage on your local machine may be easier
+
+![X](Figures/COG0060_colour.png)
+
+We can also look at the time series of strain abundances: 
+
+```
+cp ~/repos/Ebame21-Quince/scripts/GammaPlot.R .
+R
+>source('GammaPlot.R)
+>q()
+```
+
+![X](Figures/TimeSeries.png)
 
 
 Now run BayesPaths on all three bins will take 20-30mins
@@ -257,6 +270,8 @@ cd /home/ubuntu/data/mydatalocal/Projects/STRONG_AD
 STRONG --config config.yaml Results bayespaths --threads 8 --verbose
 ```
 
+We can generate results dir now:
+ 
 ```
 STRONG --config config.yaml Results results --threads 8 --verbose
 ```    
