@@ -313,4 +313,4 @@ and even run DESMAN
 STRONG --config config.yaml Results desman --threads 8 --verbose
 ```    
 
-
+![Dev_2](Figures/deviance_bin2.png)
