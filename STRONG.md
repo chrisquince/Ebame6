@@ -156,7 +156,7 @@ cp ~/repos/Ebame21-Quince/scripts/COGPlot.R .
 
 ```
 
-![SCG_table](Figures/SCG_table_concoct.pdf) 
+![SCG_table](Figures/SCG_table_concoct.png) 
 
 
 ## Subgraph Extraction
