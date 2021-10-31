@@ -304,6 +304,9 @@ The haplotypes_tree.pdf has a phylogeny of strains and a heatmap giving percent 
 
 ![Tree_2](Figures/haplotypes_tree.png)
 
+
+![Haplo_cov_](Figures/haplotypes_cov.png)
+
 and even run DESMAN
 
 ```
