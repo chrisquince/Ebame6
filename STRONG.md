@@ -297,9 +297,12 @@ cd Results/results/Bin_2
 
 Joined graph is useful indicates that we have probably missed a strain on this example, this might be down to not running gene filtering or multiple NMF iterations.
 
-![X](Figures/Bin_2_joined_graph.png)
+![Bin_2_Joined](Figures/Bin_2_joined_graph.png)
+
+The haplotypes_tree.pdf has a phylogeny of strains and a heatmap giving percent divergences.
 
 
+![Tree_2](Figures/haplotypes_tree.png)
 
 and even run DESMAN
 
